@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE vle_project PUBLIC "-//VLE TEAM//DTD Strict//EN" "http://www.vle-project.org/vle-1.3.0.dtd">
+<vle_project version="1.0" date="2016-Feb-15 15:31:42" author="Gauthier Quesnel">
+<structures>
+<model name="Top model" type="coupled" x="0" y="0" width="588" height="461"  >
+<submodels>
+<model name="Public_Health" type="coupled" x="309" y="109" width="100" height="30"  >
+<submodels>
+</submodels>
+<connections>
+</connections>
+</model>
+<model name="Animal_Health" type="coupled" x="75" y="65" width="100" height="30"  >
+<submodels>
+</submodels>
+<connections>
+</connections>
+</model>
+</submodels>
+<connections>
+</connections>
+</model>
+</structures>
+<experiment name="test"  >
+<conditions>
+<condition name="simulation_engine" >
+ <port name="begin" >
+<double>0.000000000000000</double>
+</port>
+ <port name="duration" >
+<double>1.000000000000000</double>
+</port>
+</condition>
+</conditions>
+<views>
+</views>
+</experiment>
+</vle_project>
