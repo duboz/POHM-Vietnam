@@ -5,9 +5,9 @@ Build-Depends: vle.extension.decision
 Conflicts:
 Maintainer: Raphaël Duboz <raphael.duboz@cirad.fr>
 Description: Still in progress
- .
-Tags: OneHealth
-Url: http://www.vle-project.org/1.3
+
+Tags: examples
+Url: http://www.vle-project.org/2.0
+
 Size: 0
 MD5sum: xxxx
-
