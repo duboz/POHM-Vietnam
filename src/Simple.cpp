@@ -34,7 +34,7 @@
 #include <vle/devs/Dynamics.hpp>
 #include <vle/value/Value.hpp>
 
-namespace example {
+namespace POHMVietnam {
 
 class Simple : public vle::devs::Dynamics
 {
@@ -146,4 +146,4 @@ public:
 
 } // namespace example
 
-DECLARE_DYNAMICS(example::Simple)
+DECLARE_DYNAMICS(POHMVietnam::Simple)
