@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<vle_project date="vendredi 1 juin 2018 02:00" author="Raphaël Duboz" version="0.1">
+ <structures>
+   <model type="coupled" x="0" y="0" name="OHVietnam" width="300" height="300">
+   <in/>
+   <out/>
+  <connections>
+    <connection type="internal">
+     <origin model="MOH General Dep Prev Med" port="inform"/>
+     <destination model="MARD" port="getInfo"/>
+    </connection>
+    <connection type="internal">
+     <origin model="MARD" port="inform"/>
+     <destination model="MOH General Dep Prev Med" port="getInfo"/>
+    </connection>
+    <connection type="internal">
+     <origin model="MOH General Dep Prev Med" port="ReportHumanCase"/>
+     <destination model="DAH" port="getInfo"/>
+    </connection>
+    <connection type="internal">
+     <origin model="NIHE" port="Report"/>
+     <destination model="MOH General Dep Prev Med" port="getReport"/>
+    </connection>
+    <connection type="internal">
+     <origin model="NIHE" port="Report"/>
+     <destination model="DAH" port="getInfo"/>
+    </connection>
+    <connection type="internal">
+     <origin model="DAH" port="Report"/>
+     <destination model="NIHE" port="getInfo"/>
+    </connection>
+    <connection type="internal">
+     <origin model="Province PMC" port="sendReport_HumanSample"/>
+     <destination model="NIHE" port="getReport_HumSample"/>
+    </connection>
+    <connection type="internal">
+     <origin model="NIHE" port="informHumanCase"/>
+     <destination model="Province PMC" port="getInfo"/>
+    </connection>
+   </connections>
+   <submodels>
+    <model type="atomic" x="50" y="33" observables="" name="MOH General Dep Prev Med" dynamics="" conditions="" width="212" height="50">
+     <in>
+      <port name="getInfo"/>
+      <port name="getReport"/>
+     </in>
+     <out>
+      <port name="inform"/>
+      <port name="ReportHumanCase"/>
+     </out>
+    </model>
+    <model type="atomic" x="430" y="33" observables="" name="MARD" dynamics="" conditions="" width="171" height="50">
+     <in>
+      <port name="getInfo"/>
+     </in>
+     <out>
+      <port name="inform"/>
+     </out>
+    </model>
+    <model type="atomic" x="73" y="238" observables="" name="NIHE" dynamics="" conditions="" width="328" height="50">
+     <in>
+      <port name="getInfo"/>
+      <port name="getReport_HumSample"/>
+     </in>
+     <out>
+      <port name="Report"/>
+      <port name="informHumanCase"/>
+     </out>
+    </model>
+    <model type="atomic" x="428" y="113" observables="" name="DAH" dynamics="" conditions="" width="168" height="50">
+     <in>
+      <port name="getInfo"/>
+     </in>
+     <out>
+      <port name="Report"/>
+     </out>
+    </model>
+    <model type="atomic" x="50" y="368" observables="" name="Province PMC" dynamics="" conditions="" width="183" height="50">
+     <in>
+      <port name="getInfo"/>
+     </in>
+     <out>
+      <port name="sendReport_HumanSample"/>
+     </out>
+    </model>
+    <model type="atomic" x="429" y="360" observables="" name="Province Sub DAH" dynamics="" conditions="" width="170" height="50">
+     <in/>
+     <out/>
+    </model>
+    <model type="atomic" x="50" y="445" observables="" name="District PMC" dynamics="" conditions="" width="172" height="50">
+     <in/>
+     <out/>
+    </model>
+    <model type="atomic" x="431" y="439" observables="" name="District DVS" dynamics="" conditions="" width="173" height="50">
+     <in/>
+     <out/>
+    </model>
+    <model type="atomic" x="50" y="526" observables="" name="Commun Med Center" dynamics="" conditions="" width="178" height="50">
+     <in/>
+     <out/>
+    </model>
+    <model type="atomic" x="447" y="517" observables="" name="Commune AH worker" dynamics="" conditions="" width="50" height="50">
+     <in/>
+     <out/>
+    </model>
+    <model type="atomic" x="54" y="601" observables="" name="Patient" dynamics="" conditions="" width="175" height="50">
+     <in/>
+     <out/>
+    </model>
+    <model type="atomic" x="447" y="596" observables="" name="Farmer" dynamics="" conditions="" width="157" height="50">
+     <in/>
+     <out/>
+    </model>
+   </submodels>
+  </model>
+ </structures>
+ <dynamics>
+ </dynamics>
+ <experiment name="test">
+   <conditions>
+    <condition name="simulation_engine">
+     <port name="begin">
+      <double>0.0</double>
+     </port>
+     <port name="duration">
+      <double>1.0</double>
+     </port>"
+    </condition>
+   </conditions>
+  <views>
+   <outputs>
+    <output format="local" location="" plugin="storage" name="view" package="vle.output">
+     <map>
+      <key name="columns">
+       <integer>15</integer>
+      </key>
+      <key name="header">
+       <string>top</string>
+      </key>
+      <key name="inc_columns">
+       <integer>10</integer>
+      </key>
+      <key name="inc_rows">
+       <integer>10</integer>
+      </key>
+      <key name="rows">
+       <integer>15</integer>
+      </key>
+     </map>
+    </output>
+   </outputs>
+   <view type="timed" output="view" timestep="1" name="view"/>
+   <observables/>
+  </views>
+ </experiment>
+</vle_project>
