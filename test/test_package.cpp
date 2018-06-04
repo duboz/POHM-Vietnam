@@ -3,9 +3,9 @@
  * and analysis of complex dynamical systems.
  * http://www.vle-project.org
  *
- * Copyright (c) 2003-2014 Gauthier Quesnel <quesnel@users.sourceforge.net>
- * Copyright (c) 2003-2014 ULCO http://www.univ-littoral.fr
- * Copyright (c) 2007-2014 INRA http://www.inra.fr
+ * Copyright (c) 2003-2018 Gauthier Quesnel <quesnel@users.sourceforge.net>
+ * Copyright (c) 2003-2018 ULCO http://www.univ-littoral.fr
+ * Copyright (c) 2007-2018 INRA http://www.inra.fr
  *
  * See the AUTHORS or Authors.txt file for copyright owners and
  * contributors
@@ -26,18 +26,20 @@
 
 //@@tagtest@@
 
-#define BOOST_TEST_MAIN
-#define BOOST_AUTO_TEST_MAIN
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE package_test
-#include <boost/test/unit_test.hpp>
-#include <boost/test/auto_unit_test.hpp>
-#include <boost/test/floating_point_comparison.hpp>
+#include <vle/utils/unit-test.hpp>
 
-BOOST_AUTO_TEST_CASE(test_1)
+void
+test_1()
 {
-    BOOST_REQUIRE_EQUAL(1, 1);
-    BOOST_REQUIRE_CLOSE(1000.0, 1000.1, 10.);
-    BOOST_REQUIRE(1 == 1);
-    BOOST_TEST_MESSAGE("test");
+    EnsuresEqual(1, 1);
+    EnsuresApproximatelyEqual(1000.0, 1000.1, 10.);
+    Ensures(1 == 1);
+}
+
+int
+main()
+{
+    test_1();
+
+    return unit_test::report_errors();
 }
