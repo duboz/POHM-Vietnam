@@ -36,16 +36,16 @@
 
 namespace POHMVietnam {
 
-class Simple : public vle::devs::Dynamics
+class District_DVS : public vle::devs::Dynamics
 {
 public:
-    Simple(const vle::devs::DynamicsInit& init,
+    District_DVS(const vle::devs::DynamicsInit& init,
            const vle::devs::InitEventList& events)
       : vle::devs::Dynamics(init, events)
     {
     }
 
-    ~Simple() override = default;
+    ~District_DVS() override = default;
 
     //
     // Process the initialization of the model by initializing the initial
@@ -146,4 +146,4 @@ public:
 
 } // namespace example
 
-DECLARE_DYNAMICS(POHMVietnam::Simple)
+DECLARE_DYNAMICS(POHMVietnam::District_DVS)
