@@ -40,7 +40,7 @@ namespace POHMVietnam {
 class Patient : public vle::devs::Dynamics
 {
 private:
-    enum PHASE {Sick, Sain};
+    enum PHASE {Sain, Sick};
     PHASE phase;
 
 public:
@@ -69,11 +69,9 @@ public:
     void output(vle::devs::Time time,
                 vle::devs::ExternalEventList& output) const override
     {
-        // Example:
-        // output.emplace_back("out");
-        // output.back().addDouble(0.001);
-
-        vle::devs::Dynamics::output(time, output);
+        output.emplace_back("consult");
+        output.back().addBoolean(phase == Sick);
+        //vle::devs::Dynamics::output(time, output);
     }
 
     //
@@ -96,7 +94,7 @@ public:
                 phase = Sick;
         else
            phase = Sain;
-        std::cout << "Time " << time << std::endl;
+        std::cout << "Time " << time << " " << phase << std::endl;
     }
 
     //

@@ -6,6 +6,7 @@
   
  <outputGUIplugin GUIplugin="gvle.output/file" view="view"/>
  <outputGUIplugin GUIplugin="gvle.output/file" view="View"/>
-  <outputGUIplugin GUIplugin="gvle.output/file" view="Patient"/>
+  
+ <outputGUIplugin GUIplugin="gvle.output/file" view="Patient"/>
  </outputGUIplugins>
 </vle_project_metadata>

@@ -33,11 +33,17 @@
 
 #include <vle/devs/Dynamics.hpp>
 #include <vle/value/Value.hpp>
+#include <iostream>
 
 namespace POHMVietnam {
 
 class Commune_Med_Center : public vle::devs::Dynamics
 {
+private:
+    bool   isConsulted;
+    int    nb_patients;
+    vle::devs::Time consultation_duration;
+
 public:
     Commune_Med_Center(const vle::devs::DynamicsInit& init,
            const vle::devs::InitEventList& events)
@@ -54,7 +60,10 @@ public:
     //
     vle::devs::Time init(vle::devs::Time time) override
     {
-        return vle::devs::Dynamics::init(time);
+        isConsulted = false;
+        nb_patients = 0;
+        consultation_duration = vle::devs::infinity;
+        return vle::devs::infinity;
     }
 
     //
@@ -76,7 +85,8 @@ public:
     //
     vle::devs::Time timeAdvance() const override
     {
-        return vle::devs::Dynamics::timeAdvance();
+        return consultation_duration;
+        //vle::devs::Dynamics::timeAdvance();
     }
 
     //
@@ -85,7 +95,12 @@ public:
     //
     void internalTransition(vle::devs::Time time) override
     {
-        vle::devs::Dynamics::internalTransition(time);
+        nb_patients--;
+        if (nb_patients == 0)
+            consultation_duration = vle::devs::infinity;
+        else
+            consultation_duration = 0.1;
+        //vle::devs::Dynamics::internalTransition(time);
     }
 
     //
@@ -95,14 +110,19 @@ public:
     void externalTransition(const vle::devs::ExternalEventList& events,
                             vle::devs::Time time) override
     {
-        // Example:
-        // for (const auto& elem : events) {
-        //     if (elem.attributes()->isDouble()) {
-        //         //         double value = elem.getDouble().value();
-        //     }
-        // }
-
-        externalTransition(events, time);
+        bool event_value = false;
+        for (const auto& elem : events) {
+             if (elem.getPortName() == "isConsulted" and
+                 elem.attributes()->isBoolean()) {
+                     event_value = elem.getBoolean().value();
+             }
+        }
+        if (event_value){
+             isConsulted = true;
+             nb_patients++;
+             consultation_duration = 0.1;
+        }
+        //externalTransition(events, time);
     }
 
     //
@@ -114,10 +134,8 @@ public:
       vle::devs::Time time,
       const vle::devs::ExternalEventList& events) override
     {
-        // Example of code:
-        // internalTransition(time);
-        // externalTransition(events, time);
-
+        //internalTransition(time);
+        //externalTransition(events, time);
         confluentTransitions(time, events);
     }
 
@@ -128,10 +146,8 @@ public:
     std::unique_ptr<vle::value::Value> observation(
       const vle::devs::ObservationEvent& event) const override
     {
-        // Example:
-        // return vle::Double::create(123.321);
-
-        return vle::devs::Dynamics::observation(event);
+        return vle::value::Integer::create(nb_patients);
+        //return vle::devs::Dynamics::observation(event);
     }
 
     //
