@@ -23,7 +23,7 @@
       <port name="inform"/>
      </out>
     </model>
-    <model type="atomic" x="73" y="238" observables="" name="NIHE" dynamics="NIHE" conditions="" width="328" height="50">
+    <model type="atomic" x="73" y="238" observables="" name="NIHE" dynamics="NIHE" conditions="" width="243" height="25">
      <in>
       <port name="getInfo"/>
       <port name="getReport_HumSample"/>

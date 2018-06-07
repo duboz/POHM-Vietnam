@@ -33,6 +33,7 @@
 
 #include <vle/devs/Dynamics.hpp>
 #include <vle/value/Value.hpp>
+#include <iostream>
 
 namespace POHMVietnam {
 
@@ -95,14 +96,12 @@ public:
     void externalTransition(const vle::devs::ExternalEventList& events,
                             vle::devs::Time time) override
     {
-        // Example:
-        // for (const auto& elem : events) {
-        //     if (elem.attributes()->isDouble()) {
-        //         //         double value = elem.getDouble().value();
-        //     }
-        // }
-
-        externalTransition(events, time);
+        for (const auto& elem : events) {
+             if (elem.attributes()->isString()) {
+                     std::string value = elem.getString().value();
+             }
+        }
+        //externalTransition(events, time);
     }
 
     //

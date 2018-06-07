@@ -73,11 +73,10 @@ public:
     void output(vle::devs::Time time,
                 vle::devs::ExternalEventList& output) const override
     {
-        // Example:
-        // output.emplace_back("out");
-        // output.back().addDouble(0.001);
-
-        vle::devs::Dynamics::output(time, output);
+        output.emplace_back("inform");
+        std::string s = "P" + std::to_string(nb_patients);
+        output.back().addString(s);
+        //vle::devs::Dynamics::output(time, output);
     }
 
     //
@@ -117,6 +116,9 @@ public:
                  elem.attributes()->isBoolean()) {
                      event_value = elem.getBoolean().value();
              }
+             else if (elem.getPortName() == "getResults"){
+                 event_value = elem.getBoolean().value();
+             }        
         }
         if (event_value){
              isConsulted = true;
