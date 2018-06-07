@@ -42,6 +42,7 @@ class Commune_Med_Center : public vle::devs::Dynamics
 private:
     bool   isConsulted;
     int    nb_patients;
+    double init_consult_duration;
     vle::devs::Time consultation_duration;
 
 public:
@@ -49,6 +50,7 @@ public:
            const vle::devs::InitEventList& events)
       : vle::devs::Dynamics(init, events)
     {
+        init_consult_duration = events.getDouble("consult duration");
     }
 
     ~Commune_Med_Center() override = default;
@@ -62,7 +64,6 @@ public:
     {
         isConsulted = false;
         nb_patients = 0;
-        consultation_duration = vle::devs::infinity;
         return vle::devs::infinity;
     }
 
@@ -99,7 +100,7 @@ public:
         if (nb_patients == 0)
             consultation_duration = vle::devs::infinity;
         else
-            consultation_duration = 0.1;
+            consultation_duration = init_consult_duration;
         //vle::devs::Dynamics::internalTransition(time);
     }
 
@@ -120,7 +121,7 @@ public:
         if (event_value){
              isConsulted = true;
              nb_patients++;
-             consultation_duration = 0.1;
+             consultation_duration = init_consult_duration;
         }
         //externalTransition(events, time);
     }

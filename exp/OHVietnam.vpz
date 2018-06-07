@@ -82,7 +82,7 @@
       <port name="reportSuspicion"/>
      </out>
     </model>
-    <model type="atomic" x="100" y="581" observables="Patient" name="Commun_Med_Center" dynamics="Commune_Med_Center" conditions="" width="178" height="50">
+    <model type="atomic" x="100" y="581" observables="Patient" name="Commun_Med_Center" dynamics="Commune_Med_Center" conditions="Commune_Med_Center" width="178" height="50">
      <in>
       <port name="getResults"/>
       <port name="isConsulted"/>
@@ -228,7 +228,12 @@
       <double>100</double>
      </port>"
     </condition>
-   </conditions>
+   <condition name="Commune_Med_Center">
+    <port name="consult duration">
+     <double>0.1</double>
+    </port>
+   </condition>
+  </conditions>
   <views>
    <outputs>
     <output format="local" location="" plugin="file" name="Patient" package="vle.output">

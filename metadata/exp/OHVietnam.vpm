@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE vle_project_metadata>
 <vle_project_metadata author="me" version="1.x">
- <condPlugins/>
+ <condPlugins>
+  <condPlugin cond="Commune_Med_Center" plugin=""/>
+ </condPlugins>
  <outputGUIplugins>
   
  <outputGUIplugin GUIplugin="gvle.output/file" view="view"/>
