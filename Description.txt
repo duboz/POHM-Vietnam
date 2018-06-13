@@ -1,7 +1,7 @@
 Package: OneHealth
 Version: 0.1.0
 Depends:
-Build-Depends: 
+Build-Depends: vle.ode,vle.output
 Conflicts:
 Maintainer: Raphaël Duboz <raphael.duboz@cirad.fr>
 Description: Still in progress

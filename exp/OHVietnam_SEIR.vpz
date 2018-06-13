@@ -1,11 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<vle_project date="vendredi 1 juin 2018 02:00" author="Raphaël Duboz" version="0.1">
+<vle_project date="vendredi 1 juin 2018 02:00" author="Raphaël Duboz" version="0.2">
  <structures>
    <model type="coupled" x="0" y="0" name="OHVietnam" width="300" height="300">
    <in/>
    <out/>
    <submodels>
-    <model type="atomic" x="50" y="33" observables="" name="MOH_General_Dep_Prev_Med" dynamics="MOH" conditions="" width="212" height="50">
+
+   <model type="coupled" x="404" y="76" name="Surveillance" width="50" height="50">
+     <in>
+      <port name="Risk"/>
+     </in>
+     <out>
+      <port name="Control"/>
+     </out>
+     <submodels>
+    <model type="atomic" x="91" y="28" observables="" name="MOH_General_Dep_Prev_Med" dynamics="MOH" conditions="" width="212" height="50">
      <in>
       <port name="getInfo"/>
       <port name="getReport"/>
@@ -15,7 +24,7 @@
       <port name="ReportHumanCase"/>
      </out>
     </model>
-    <model type="atomic" x="430" y="33" observables="" name="MARD" dynamics="MARD" conditions="" width="171" height="50">
+    <model type="atomic" x="427" y="28" observables="" name="MARD" dynamics="MARD" conditions="" width="171" height="50">
      <in>
       <port name="getInfo"/>
      </in>
@@ -42,7 +51,7 @@
       <port name="Report"/>
      </out>
     </model>
-    <model type="atomic" x="50" y="350" observables="" name="Province_PMC" dynamics="Province_PMC" conditions="" width="183" height="50">
+    <model type="atomic" x="96" y="348" observables="" name="Province_PMC" dynamics="Province_PMC" conditions="" width="183" height="50">
      <in>
       <port name="getInfo"/>
      <port name="getSample"/>
@@ -52,7 +61,7 @@
      <port name="sendResults"/>
      </out>
     </model>
-    <model type="atomic" x="795" y="377" observables="" name="Province_Sub_DAH" dynamics="Province_Sub_DAH" conditions="" width="170" height="50">
+    <model type="atomic" x="803" y="292" observables="" name="Province_Sub_DAH" dynamics="Province_Sub_DAH" conditions="" width="170" height="50">
      <in>
       <port name="getSample"/>
       <port name="getInfo"/>
@@ -62,7 +71,7 @@
       <port name="reportSuspicion"/>
      </out>
     </model>
-    <model type="atomic" x="57" y="458" observables="" name="District_PMC" dynamics="District_PMC" conditions="" width="172" height="50">
+    <model type="atomic" x="91" y="457" observables="" name="District_PMC" dynamics="District_PMC" conditions="" width="172" height="50">
      <in>
       <port name="getResults"/>
       <port name="getInfo"/>
@@ -72,7 +81,7 @@
       <port name="sendResults"/>
      </out>
     </model>
-    <model type="atomic" x="590" y="457" observables="" name="District_DVS" dynamics="District_DVS" conditions="" width="173" height="50">
+    <model type="atomic" x="592" y="413" observables="" name="District_DVS" dynamics="District_DVS" conditions="" width="173" height="50">
      <in>
       <port name="getSample"/>
       <port name="getInfo"/>
@@ -91,7 +100,7 @@
       <port name="inform"/>
      </out>
     </model>
-    <model type="atomic" x="395" y="545" observables="" name="Commune_AH_worker" dynamics="Commune_AH_worker" conditions="" width="50" height="50">
+    <model type="atomic" x="396" y="541" observables="" name="Commune_AH_worker" dynamics="Commune_AH_worker" conditions="" width="50" height="50">
      <in>
       <port name="getInfo"/>
      </in>
@@ -102,20 +111,26 @@
      </out>
     </model>
     <model type="atomic" x="139" y="688" observables="Patient" name="Patient" dynamics="Patient" conditions="" width="175" height="50">
-     <in/>
+     <in>
+        <port name="Risk"/>
+       </in>
      <out>
       <port name="consult"/>
      </out>
     </model>
-    <model type="atomic" x="606" y="661" observables="" name="Farmer" dynamics="Farmer" conditions="" width="157" height="50">
+    <model type="atomic" x="830" y="689" observables="" name="Farmer" dynamics="Farmer" conditions="" width="157" height="50">
      <in>
       <port name="sampled"/>
      </in>
      <out>
       <port name="reportMortality"/>
-     </out>
+     <port name="Control"/>
+       </out>
     </model>
-   </submodels>
+
+
+    </submodels>
+  
   <connections>
     <connection type="internal">
      <origin model="MOH_General_Dep_Prev_Med" port="inform"/>
@@ -201,9 +216,112 @@
      <origin model="Province_PMC" port="sendResults"/>
      <destination model="District_PMC" port="getResults"/>
     </connection>
-   </connections>
+   <connection type="input">
+       <origin model="Surveillance" port="Risk"/>
+       <destination model="Patient" port="Risk"/>
+      </connection>
+      <connection type="output">
+       <origin model="Farmer" port="Control"/>
+       <destination model="Surveillance" port="Control"/>
+      </connection>
+     </connections>
    </model> 
-</structures>
+<model type="coupled" x="50" y="70" name="Health Dynamic" width="50" height="50">
+     <in>
+      <port name="Ctl rate"/>
+     </in>
+     <out>
+      <port name="Prevalence"/>
+     </out>
+     <submodels>
+      <model type="atomic" x="115" y="56" observables="" name="SEIR" dynamics="" conditions="" width="50" height="50">
+       <in>
+        <port name="Ctl rate"/>
+       </in>
+       <out>
+        <port name="Prevalence"/>
+       </out>
+      </model>
+     </submodels>
+     <connections>
+      <connection type="input">
+       <origin model="Health Dynamic" port="Ctl rate"/>
+       <destination model="SEIR" port="Ctl rate"/>
+      </connection>
+      <connection type="output">
+       <origin model="SEIR" port="Prevalence"/>
+       <destination model="Health Dynamic" port="Prevalence"/>
+      </connection>
+     </connections>
+    </model>
+    <model type="coupled" x="230" y="61" name="Integrator" width="50" height="50">
+     <in>
+      <port name="Prevalence"/>
+      <port name="Control"/>
+     </in>
+     <out>
+      <port name="Risk"/>
+      <port name="Ctl rate"/>
+     </out>
+     <submodels>
+      <model type="atomic" x="132" y="18" observables="" name="HD to Surveillance" dynamics="" conditions="" width="50" height="50">
+       <in>
+        <port name="Prevalence"/>
+       </in>
+       <out>
+        <port name="Risk"/>
+       </out>
+      </model>
+      <model type="atomic" x="276" y="126" observables="" name="Surveillance to HD" dynamics="" conditions="" width="50" height="50">
+       <in>
+        <port name="Control"/>
+       </in>
+       <out>
+        <port name="Ctrl rate"/>
+       </out>
+      </model>
+     </submodels>
+     <connections>
+      <connection type="input">
+       <origin model="Integrator" port="Prevalence"/>
+       <destination model="HD to Surveillance" port="Prevalence"/>
+      </connection>
+      <connection type="output">
+       <origin model="HD to Surveillance" port="Risk"/>
+       <destination model="Integrator" port="Risk"/>
+      </connection>
+      <connection type="input">
+       <origin model="Integrator" port="Control"/>
+       <destination model="Surveillance to HD" port="Control"/>
+      </connection>
+      <connection type="output">
+       <origin model="Surveillance to HD" port="Ctrl rate"/>
+       <destination model="Integrator" port="Ctl rate"/>
+      </connection>
+     </connections>
+    </model>
+   </submodels>
+  <connections>
+    <connection type="internal">
+     <origin model="Health Dynamic" port="Prevalence"/>
+     <destination model="Integrator" port="Prevalence"/>
+    </connection>
+    <connection type="internal">
+     <origin model="Integrator" port="Risk"/>
+     <destination model="Surveillance" port="Risk"/>
+    </connection>
+    <connection type="internal">
+     <origin model="Surveillance" port="Control"/>
+     <destination model="Integrator" port="Control"/>
+    </connection>
+    <connection type="internal">
+     <origin model="Integrator" port="Ctl rate"/>
+     <destination model="Health Dynamic" port="Ctl rate"/>
+    </connection>
+   </connections>
+  </model>
+ </structures>
+
  <dynamics>
  <dynamic library="MOH" name="MOH" package="OneHealthVietnam"/>
  <dynamic library="MARD" name="MARD" package="OneHealthVietnam"/>
@@ -217,6 +335,7 @@
   <dynamic library="Patient" name="Patient" package="OneHealthVietnam"/>
   <dynamic library="Province_PMC" name="Province_PMC" package="OneHealthVietnam"/>
   <dynamic library="Province_Sub_DAH" name="Province_Sub_DAH" package="OneHealthVietnam"/>
+ <dynamic library="&lt;None>" name="SEIR" package="vle.ode"/>
  </dynamics>
  <experiment name="OHVietnam">
    <conditions>
@@ -266,4 +385,5 @@
    </observables>
   </views>
  </experiment>
+
 </vle_project>
