@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -Wall -Wextra -ggdb3 -std=c++14 -O2 -g -DNDEBUG  -shared  -o libCommune_Med_Center.so CMakeFiles/Commune_Med_Center.dir/Commune_Med_Center.cpp.o  -L/home/raph/.vle/lib -Wl,-rpath,/home/raph/.vle/lib: -lvle-2.1 -lxml2 

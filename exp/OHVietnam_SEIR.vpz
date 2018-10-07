@@ -234,7 +234,7 @@
       <port name="Prevalence"/>
      </out>
      <submodels>
-      <model type="atomic" x="115" y="56" observables="" name="SEIR" dynamics="" conditions="" width="50" height="50">
+      <model type="atomic" x="115" y="56" observables="" name="SEIR" dynamics="SEIR" conditions="" width="50" height="50">
        <in>
         <port name="Ctl rate"/>
        </in>
@@ -323,7 +323,7 @@
  </structures>
 
  <dynamics>
- <dynamic library="MOH" name="MOH" package="OneHealthVietnam"/>
+ <dynamic library="&lt;None>" name="MOH" package="OneHealthVietnam"/>
  <dynamic library="MARD" name="MARD" package="OneHealthVietnam"/>
  <dynamic library="DAH" name="DAH" package="OneHealthVietnam"/>
   <dynamic library="Commune_AH_worker" name="Commune_AH_worker" package="OneHealthVietnam"/>
@@ -335,7 +335,7 @@
   <dynamic library="Patient" name="Patient" package="OneHealthVietnam"/>
   <dynamic library="Province_PMC" name="Province_PMC" package="OneHealthVietnam"/>
   <dynamic library="Province_Sub_DAH" name="Province_Sub_DAH" package="OneHealthVietnam"/>
- <dynamic library="&lt;None>" name="SEIR" package="vle.ode"/>
+ <dynamic library="&lt;Node>" name="SEIR" package="gvle.forrester"/>
  </dynamics>
  <experiment name="OHVietnam">
    <conditions>

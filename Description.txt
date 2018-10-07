@@ -1,13 +1,12 @@
-Package: OneHealth
+Package: MyProject
 Version: 0.1.0
 Depends:
-Build-Depends: vle.ode,vle.output
+Build-Depends: gvle.forrester,vle.ode,vle.output
 Conflicts:
-Maintainer: Raphaël Duboz <raphael.duboz@cirad.fr>
+Maintainer: Gauthier Quesnel <quesnel@users.sourceforge.net>
 Description: Still in progress
-
+ .
 Tags: examples
-Url: http://www.vle-project.org/2.0
-
+Url: https://www.vle-project.org/2.0
 Size: 0
 MD5sum: xxxx
