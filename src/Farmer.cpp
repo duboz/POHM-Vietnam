@@ -47,53 +47,30 @@ public:
 
     ~Farmer() override = default;
 
-    //
-    // Process the initialization of the model by initializing the initial
-    // state and return the duration of the initial state.
-    // Default, @c init function returns vle::devs::infinity
-    //
-    vle::devs::Time init(vle::devs::Time time) override
+    vle::devs::Time init(vle::devs::Time /*time*/) override
     {
-        return vle::devs::Dynamics::init(time);
+        return vle::devs::infinity;
     }
 
-    //
-    // Process the output function: add external event into the @c output.
-    //
-    void output(vle::devs::Time time,
+/*    void output(vle::devs::Time time,
                 vle::devs::ExternalEventList& output) const override
     {
         // Example:
         // output.emplace_back("out");
         // output.back().addDouble(0.001);
-
-        vle::devs::Dynamics::output(time, output);
     }
-
-    //
-    // Compute the duration of the current state. As the @c init function, @c
-    // timeAdvance function default returns vle::devs::infinity.
-    //
+*/
     vle::devs::Time timeAdvance() const override
     {
-        return vle::devs::Dynamics::timeAdvance();
+        return vle::devs::infinity;
     }
 
-    //
-    // Compute the new state of the model with the internal transition
-    // function. Default function does nothing.
-    //
-    void internalTransition(vle::devs::Time time) override
+    void internalTransition(vle::devs::Time /*time*/) override
     {
-        vle::devs::Dynamics::internalTransition(time);
     }
 
-    //
-    // Compute the new state of the model when at least one external event
-    // occurs. Default function does nothing.
-    //
-    void externalTransition(const vle::devs::ExternalEventList& events,
-                            vle::devs::Time time) override
+    void externalTransition(const vle::devs::ExternalEventList& /*events*/,
+                            vle::devs::Time /*time*/) override
     {
         // Example:
         // for (const auto& elem : events) {
@@ -101,46 +78,26 @@ public:
         //         //         double value = elem.getDouble().value();
         //     }
         // }
-
-        externalTransition(events, time);
     }
 
-    //
-    // Compute the new state of the model when both at least one external event
-    // occurs and an internal event. Default function is to call internal
-    // transition and external transition as follow:
-    //
     void confluentTransitions(
       vle::devs::Time time,
       const vle::devs::ExternalEventList& events) override
-    {
-        // Example of code:
-        // internalTransition(time);
-        // externalTransition(events, time);
-
-        confluentTransitions(time, events);
+    {  
+        internalTransition(time);
+        externalTransition(events, time);
     }
 
-    //
-    // Compute the current state of the model at a specified time and for a
-    // specified observation port.
-    //
     std::unique_ptr<vle::value::Value> observation(
-      const vle::devs::ObservationEvent& event) const override
+      const vle::devs::ObservationEvent& /*event*/) const override
     {
         // Example:
         // return vle::Double::create(123.321);
-
-        return vle::devs::Dynamics::observation(event);
+        return 0;
     }
 
-    //
-    // When the simulation of the atomic model is finished, the finish method
-    // is invoked. Default function does nothing.
-    //
     void finish()
     {
-        vle::devs::Dynamics::finish();
     }
 };
 

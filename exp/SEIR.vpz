@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<vle_project date="vendredi 1 juin 2018 02:00" author="Raphaël Duboz" version="0.2">
+ <structures>
+   <model type="coupled" x="0" y="0" name="OHVietnam" width="300" height="300">
+   <in/>
+   <out/>
+   <submodels>
+    <model type="coupled" x="50" y="35" observables="" name="Epidemic Dynamic" width="50" height="50">
+     <in/>
+     <out/>
+     <submodels>
+      <model type="atomic" x="300" y="24" observables="ObsSEIR" name="SEIR Dynamic" dynamics="SEIR" conditions="CondSEIR" width="50" height="42">
+       <in>
+        <port name="C"/>
+       </in>
+       <out>
+        <port name="I"/>
+       </out>
+      </model>
+      <model type="atomic" x="50" y="29" observables="" name="Surveillance Control" dynamics="Surveillance Control" conditions="CondPerturbation" width="50" height="41">
+       <in>
+        <port name="I"/>
+       </in>
+       <out>
+        <port name="C"/>
+       </out>
+      </model>
+     </submodels>
+     <connections>
+      <connection type="internal">
+       <origin model="Surveillance Control" port="C"/>
+       <destination model="SEIR Dynamic" port="C"/>
+      </connection>
+      <connection type="internal">
+       <origin model="SEIR Dynamic" port="I"/>
+       <destination model="Surveillance Control" port="I"/>
+      </connection>
+     </connections>
+    </model>
+   </submodels>
+   <connections/>
+  </model>
+ </structures>
+
+ <dynamics> 
+ <dynamic library="Seir" name="SEIR" package="POHM-Vietnam"/>
+ 
+ <dynamic library="Perturbation" name="Surveillance Control" package="POHM-Vietnam"/>
+ </dynamics>
+ <experiment name="OHVietnam">
+   <conditions>
+    <condition name="simulation_engine">
+     <port name="begin">
+      <double>0.0</double>
+     <double>0</double>
+     <double>0</double>
+    </port>
+     <port name="duration">
+      <double>365</double>
+     <double>365</double>
+     <double>365</double>
+    </port>"
+    </condition>
+   
+  <condition name="CondSEIR">
+    <port name="method">
+     <string>qss2</string>
+     <string>qss2</string>
+     <string>qss2</string>
+    </port>
+   <port name="init_value_S">
+     <double>0.999</double>
+    <double>0.999</double>
+     <double>0.999</double>
+    </port>
+    
+    <port name="init_value_I">
+     <double>0.001</double>
+    <double>0.001</double>
+     <double>0.001</double>
+    </port>
+    <port name="init_value_R">
+     <double>0</double>
+    <double>0</double>
+     <double>0</double>
+    </port>
+    <port name="m">
+     <double>0.035</double>
+    <double>0.035</double>
+     <double>0.035</double>
+    </port>
+    <port name="b">
+     <double>0.35</double>
+    <double>0.35</double>
+     <double>0.35</double>
+    </port>
+    <port name="c">
+     <double>0.01</double>
+    <double>0.01</double>
+     <double>0.01</double>
+    </port>
+    <port name="g">
+     <double>0.22</double>
+    <double>0.22</double>
+     <double>0.22</double>
+    </port>
+   <port name="quantum_S">
+     <double>0.001</double>
+    <double>0.001</double>
+     <double>0.001</double>
+    </port>
+    
+    <port name="quantum_I">
+     <double>0.001</double>
+    <double>0.001</double>
+     <double>0.001</double>
+    </port>
+    
+   <port name="init_value_C">
+     <double>0</double>
+    <double>0</double>
+     <double>0</double>
+    </port>
+   <port name="v">
+     <double>0.01</double>
+    <double>0.01</double>
+     <double>0.01</double>
+    </port>
+   <port name="init_value_E">
+     <double>0</double>
+    <double>0</double>
+     <double>0</double>
+    </port>
+    <port name="quantum_R">
+     <double>0.001</double>
+    <double>0.001</double>
+     <double>0.001</double>
+    </port>
+    <port name="quantum_C">
+     <double>0.001</double>
+    <double>0.001</double>
+     <double>0.001</double>
+    </port>
+    <port name="quantum_E">
+     <double>0.001</double>
+    <double>0.001</double>
+     <double>0.001</double>
+    </port>
+   </condition>
+  <condition name="CondPerturbation">
+    <port name="control delay">
+     <double>3</double>
+    <double>7</double>
+     <double>14</double>
+    </port>
+    <port name="control duration">
+     <double>5</double>
+    <double>7</double>
+     <double>10</double>
+    </port>
+    <port name="val perturbation">
+     <double>0.1</double>
+    <double>0.2</double>
+     <double>0.3</double>
+    </port>    
+   <port name="detection threshold">
+     <double>0.05</double>
+    <double>0.1</double>
+     <double>0.2</double>
+    </port>
+   </condition>
+  </conditions>
+  <views>
+   <outputs>
+    
+   <output format="local" location="" plugin="file" name="SEIR" package="vle.output">
+     <map>
+      <key name="type">
+       <string>text</string>
+      </key>
+      <key name="locale">
+       <string>C</string>
+      </key>
+      <key name="output">
+       <string>file</string>
+      </key>
+      <key name="flush-by-bag">
+       <boolean>0</boolean>
+      </key>
+      <key name="julian-day">
+       <boolean>0</boolean>
+      </key>
+     </map>
+    </output>
+   </outputs>
+   
+   <observables>
+    
+   <observable name="ObsSEIR">
+     <port name="S">
+      <attachedview name="SEIR"/>
+     </port>
+     
+     <port name="I">
+      <attachedview name="SEIR"/>
+     </port>
+     <port name="R">
+      <attachedview name="SEIR"/>
+     </port>
+    <port name="E">
+      <attachedview name="SEIR"/>
+     </port>
+    </observable>
+   </observables>
+  <view type="timed" output="SEIR" timestep="0.1" name="SEIR"/>
+  </views>
+ </experiment>
+
+<classes/>
+</vle_project>

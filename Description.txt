@@ -1,7 +1,7 @@
 Package: MyProject
 Version: 0.1.0
 Depends:
-Build-Depends: gvle.forrester,vle.ode,vle.output
+Build-Depends:
 Conflicts:
 Maintainer: Gauthier Quesnel <quesnel@users.sourceforge.net>
 Description: Still in progress

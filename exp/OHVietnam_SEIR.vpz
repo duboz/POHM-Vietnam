@@ -5,228 +5,229 @@
    <in/>
    <out/>
    <submodels>
-
-   <model type="coupled" x="404" y="76" name="Surveillance" width="50" height="50">
+    <model type="coupled" x="421" y="80" name="Surveillance &amp; Control" width="50" height="50">
      <in>
-      <port name="Risk"/>
+      <port name="Prevalence"/>
      </in>
      <out>
       <port name="Control"/>
      </out>
      <submodels>
-    <model type="atomic" x="91" y="28" observables="" name="MOH_General_Dep_Prev_Med" dynamics="MOH" conditions="" width="212" height="50">
-     <in>
-      <port name="getInfo"/>
-      <port name="getReport"/>
-     </in>
-     <out>
-      <port name="inform"/>
-      <port name="ReportHumanCase"/>
-     </out>
-    </model>
-    <model type="atomic" x="427" y="28" observables="" name="MARD" dynamics="MARD" conditions="" width="171" height="50">
-     <in>
-      <port name="getInfo"/>
-     </in>
-     <out>
-      <port name="inform"/>
-     </out>
-    </model>
-    <model type="atomic" x="73" y="238" observables="" name="NIHE" dynamics="NIHE" conditions="" width="243" height="25">
-     <in>
-      <port name="getInfo"/>
-      <port name="getReport_HumSample"/>
-     </in>
-     <out>
-      <port name="Report"/>
-      <port name="informHumanCase"/>
-     </out>
-    </model>
-    <model type="atomic" x="551" y="137" observables="" name="DAH" dynamics="DAH" conditions="" width="168" height="50">
-     <in>
-      <port name="getInfo"/>
-     <port name="getSample"/>
-     </in>
-     <out>
-      <port name="Report"/>
-     </out>
-    </model>
-    <model type="atomic" x="96" y="348" observables="" name="Province_PMC" dynamics="Province_PMC" conditions="" width="183" height="50">
-     <in>
-      <port name="getInfo"/>
-     <port name="getSample"/>
-     </in>
-     <out>
-      <port name="sendReport_HumanSample"/>
-     <port name="sendResults"/>
-     </out>
-    </model>
-    <model type="atomic" x="803" y="292" observables="" name="Province_Sub_DAH" dynamics="Province_Sub_DAH" conditions="" width="170" height="50">
-     <in>
-      <port name="getSample"/>
-      <port name="getInfo"/>
-     </in>
-     <out>
-      <port name="Send_Sample"/>
-      <port name="reportSuspicion"/>
-     </out>
-    </model>
-    <model type="atomic" x="91" y="457" observables="" name="District_PMC" dynamics="District_PMC" conditions="" width="172" height="50">
-     <in>
-      <port name="getResults"/>
-      <port name="getInfo"/>
-     </in>
-     <out>
-      <port name="sendSample"/>
-      <port name="sendResults"/>
-     </out>
-    </model>
-    <model type="atomic" x="592" y="413" observables="" name="District_DVS" dynamics="District_DVS" conditions="" width="173" height="50">
-     <in>
-      <port name="getSample"/>
-      <port name="getInfo"/>
-     </in>
-     <out>
-      <port name="sendSample"/>
-      <port name="reportSuspicion"/>
-     </out>
-    </model>
-    <model type="atomic" x="100" y="581" observables="Patient" name="Commun_Med_Center" dynamics="Commune_Med_Center" conditions="Commune_Med_Center" width="178" height="50">
-     <in>
-      <port name="getResults"/>
-      <port name="isConsulted"/>
-     </in>
-     <out>
-      <port name="inform"/>
-     </out>
-    </model>
-    <model type="atomic" x="396" y="541" observables="" name="Commune_AH_worker" dynamics="Commune_AH_worker" conditions="" width="50" height="50">
-     <in>
-      <port name="getInfo"/>
-     </in>
-     <out>
-      <port name="sendSample"/>
-      <port name="repportSuspicion"/>
-      <port name="takeSampleFrom"/>
-     </out>
-    </model>
-    <model type="atomic" x="139" y="688" observables="Patient" name="Patient" dynamics="Patient" conditions="" width="175" height="50">
-     <in>
+      <model type="atomic" x="131" y="24" observables="" name="MOH_General_Dep_Prev_Med" dynamics="MOH" conditions="" width="212" height="50">
+       <in>
+        <port name="getInfo"/>
+        <port name="getReport"/>
+       </in>
+       <out>
+        <port name="inform"/>
+        <port name="ReportHumanCase"/>
+       </out>
+      </model>
+      <model type="atomic" x="539" y="25" observables="" name="MARD" dynamics="MARD" conditions="" width="171" height="50">
+       <in>
+        <port name="getInfo"/>
+       </in>
+       <out>
+        <port name="inform"/>
+       </out>
+      </model>
+      <model type="atomic" x="128" y="238" observables="" name="NIHE" dynamics="NIHE" conditions="" width="243" height="25">
+       <in>
+        <port name="getInfo"/>
+        <port name="getReport_HumSample"/>
+       </in>
+       <out>
+        <port name="Report"/>
+        <port name="informHumanCase"/>
+       </out>
+      </model>
+      <model type="atomic" x="551" y="137" observables="" name="DAH" dynamics="DAH" conditions="" width="168" height="50">
+       <in>
+        <port name="getInfo"/>
+        <port name="getSample"/>
+       </in>
+       <out>
+        <port name="Report"/>
+       </out>
+      </model>
+      <model type="atomic" x="159" y="352" observables="" name="Province_PMC" dynamics="Province_PMC" conditions="" width="183" height="50">
+       <in>
+        <port name="getInfo"/>
+        <port name="getSample"/>
+       </in>
+       <out>
+        <port name="sendReport_HumanSample"/>
+        <port name="sendResults"/>
+       </out>
+      </model>
+      <model type="atomic" x="548" y="277" observables="" name="Province_Sub_DAH" dynamics="Province_Sub_DAH" conditions="" width="170" height="50">
+       <in>
+        <port name="getSample"/>
+        <port name="getInfo"/>
+       </in>
+       <out>
+        <port name="Send_Sample"/>
+        <port name="reportSuspicion"/>
+       </out>
+      </model>
+      <model type="atomic" x="175" y="464" observables="" name="District_PMC" dynamics="District_PMC" conditions="" width="172" height="49">
+       <in>
+        <port name="getResults"/>
+        <port name="getInfo"/>
+       </in>
+       <out>
+        <port name="sendSample"/>
+        <port name="sendResults"/>
+       </out>
+      </model>
+      <model type="atomic" x="548" y="416" observables="" name="District_DVS" dynamics="District_DVS" conditions="" width="173" height="50">
+       <in>
+        <port name="getSample"/>
+        <port name="getInfo"/>
+       </in>
+       <out>
+        <port name="sendSample"/>
+        <port name="reportSuspicion"/>
+       </out>
+      </model>
+      <model type="atomic" x="149" y="594" observables="Patient" name="Commun_Med_Center" dynamics="Commune_Med_Center" conditions="Commune_Med_Center" width="178" height="50">
+       <in>
+        <port name="getResults"/>
+        <port name="isConsulted"/>
+       </in>
+       <out>
+        <port name="inform"/>
+       </out>
+      </model>
+      <model type="atomic" x="396" y="541" observables="" name="Commune_AH_worker" dynamics="Commune_AH_worker" conditions="" width="50" height="50">
+       <in>
+        <port name="getInfo"/>
+       </in>
+       <out>
+        <port name="sendSample"/>
+        <port name="repportSuspicion"/>
+        <port name="takeSampleFrom"/>
+       </out>
+      </model>
+      <model type="atomic" x="159" y="684" observables="Patient" name="Patient" dynamics="Patient" conditions="" width="175" height="50">
+       <in>
         <port name="Risk"/>
        </in>
-     <out>
-      <port name="consult"/>
-     </out>
-    </model>
-    <model type="atomic" x="830" y="689" observables="" name="Farmer" dynamics="Farmer" conditions="" width="157" height="50">
-     <in>
-      <port name="sampled"/>
-     </in>
-     <out>
-      <port name="reportMortality"/>
-     <port name="Control"/>
+       <out>
+        <port name="consult"/>
        </out>
-    </model>
-
-
-    </submodels>
-  
-  <connections>
-    <connection type="internal">
-     <origin model="MOH_General_Dep_Prev_Med" port="inform"/>
-     <destination model="MARD" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="MARD" port="inform"/>
-     <destination model="MOH_General_Dep_Prev_Med" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="MOH_General_Dep_Prev_Med" port="ReportHumanCase"/>
-     <destination model="DAH" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="NIHE" port="Report"/>
-     <destination model="MOH_General_Dep_Prev_Med" port="getReport"/>
-    </connection>
-    <connection type="internal">
-     <origin model="NIHE" port="Report"/>
-     <destination model="DAH" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="DAH" port="Report"/>
-     <destination model="NIHE" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Province_PMC" port="sendReport_HumanSample"/>
-     <destination model="NIHE" port="getReport_HumSample"/>
-    </connection>
-    <connection type="internal">
-     <origin model="NIHE" port="informHumanCase"/>
-     <destination model="Province_PMC" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Commune_AH_worker" port="takeSampleFrom"/>
-     <destination model="Farmer" port="sampled"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Farmer" port="reportMortality"/>
-     <destination model="Commune_AH_worker" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Commune_AH_worker" port="repportSuspicion"/>
-     <destination model="District_DVS" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Commune_AH_worker" port="sendSample"/>
-     <destination model="District_DVS" port="getSample"/>
-    </connection>
-    <connection type="internal">
-     <origin model="District_DVS" port="sendSample"/>
-     <destination model="Province_Sub_DAH" port="getSample"/>
-    </connection>
-    <connection type="internal">
-     <origin model="District_DVS" port="reportSuspicion"/>
-     <destination model="Province_Sub_DAH" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Province_Sub_DAH" port="Send_Sample"/>
-     <destination model="DAH" port="getSample"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Province_Sub_DAH" port="reportSuspicion"/>
-     <destination model="DAH" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Patient" port="consult"/>
-     <destination model="Commun_Med_Center" port="isConsulted"/>
-    </connection>
-    <connection type="internal">
-     <origin model="District_PMC" port="sendResults"/>
-     <destination model="Commun_Med_Center" port="getResults"/>
-    </connection>
-    <connection type="internal">
-     <origin model="District_PMC" port="sendSample"/>
-     <destination model="Province_PMC" port="getSample"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Commun_Med_Center" port="inform"/>
-     <destination model="District_PMC" port="getInfo"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Province_PMC" port="sendResults"/>
-     <destination model="District_PMC" port="getResults"/>
-    </connection>
-   <connection type="input">
-       <origin model="Surveillance" port="Risk"/>
+      </model>
+      <model type="atomic" x="590" y="733" observables="" name="Farmer" dynamics="Farmer" conditions="" width="157" height="50">
+       <in>
+        <port name="sampled"/>
+       <port name="Prevalence"/>
+       </in>
+       <out>
+        <port name="reportMortality"/>
+        <port name="Control"/>
+       </out>
+      </model>
+     </submodels>
+     <connections>
+      <connection type="internal">
+       <origin model="MOH_General_Dep_Prev_Med" port="inform"/>
+       <destination model="MARD" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="MARD" port="inform"/>
+       <destination model="MOH_General_Dep_Prev_Med" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="MOH_General_Dep_Prev_Med" port="ReportHumanCase"/>
+       <destination model="DAH" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="NIHE" port="Report"/>
+       <destination model="MOH_General_Dep_Prev_Med" port="getReport"/>
+      </connection>
+      <connection type="internal">
+       <origin model="NIHE" port="Report"/>
+       <destination model="DAH" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="DAH" port="Report"/>
+       <destination model="NIHE" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Province_PMC" port="sendReport_HumanSample"/>
+       <destination model="NIHE" port="getReport_HumSample"/>
+      </connection>
+      <connection type="internal">
+       <origin model="NIHE" port="informHumanCase"/>
+       <destination model="Province_PMC" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Commune_AH_worker" port="takeSampleFrom"/>
+       <destination model="Farmer" port="sampled"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Farmer" port="reportMortality"/>
+       <destination model="Commune_AH_worker" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Commune_AH_worker" port="repportSuspicion"/>
+       <destination model="District_DVS" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Commune_AH_worker" port="sendSample"/>
+       <destination model="District_DVS" port="getSample"/>
+      </connection>
+      <connection type="internal">
+       <origin model="District_DVS" port="sendSample"/>
+       <destination model="Province_Sub_DAH" port="getSample"/>
+      </connection>
+      <connection type="internal">
+       <origin model="District_DVS" port="reportSuspicion"/>
+       <destination model="Province_Sub_DAH" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Province_Sub_DAH" port="Send_Sample"/>
+       <destination model="DAH" port="getSample"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Province_Sub_DAH" port="reportSuspicion"/>
+       <destination model="DAH" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Patient" port="consult"/>
+       <destination model="Commun_Med_Center" port="isConsulted"/>
+      </connection>
+      <connection type="internal">
+       <origin model="District_PMC" port="sendResults"/>
+       <destination model="Commun_Med_Center" port="getResults"/>
+      </connection>
+      <connection type="internal">
+       <origin model="District_PMC" port="sendSample"/>
+       <destination model="Province_PMC" port="getSample"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Commun_Med_Center" port="inform"/>
+       <destination model="District_PMC" port="getInfo"/>
+      </connection>
+      <connection type="internal">
+       <origin model="Province_PMC" port="sendResults"/>
+       <destination model="District_PMC" port="getResults"/>
+      </connection>
+      <connection type="input">
+       <origin model="Surveillance &amp; Control" port="Prevalence"/>
        <destination model="Patient" port="Risk"/>
       </connection>
       <connection type="output">
        <origin model="Farmer" port="Control"/>
-       <destination model="Surveillance" port="Control"/>
+       <destination model="Surveillance &amp; Control" port="Control"/>
+      </connection>
+     <connection type="input">
+       <origin model="Surveillance &amp; Control" port="Prevalence"/>
+       <destination model="Farmer" port="Prevalence"/>
       </connection>
      </connections>
-   </model> 
-<model type="coupled" x="50" y="70" name="Health Dynamic" width="50" height="50">
+    </model>
+    <model type="coupled" x="50" y="83" name="Epidemic Dynamic" width="50" height="50">
      <in>
       <port name="Ctl rate"/>
      </in>
@@ -234,108 +235,68 @@
       <port name="Prevalence"/>
      </out>
      <submodels>
-      <model type="atomic" x="115" y="56" observables="" name="SEIR" dynamics="SEIR" conditions="" width="50" height="50">
+      <model type="atomic" x="240" y="75" observables="ObsSEIR" name="SEIR Dynamic" dynamics="SEIR" conditions="CondSEIR" width="50" height="96">
+       <in>
+        <port name="C"/>
+       </in>
+       <out>
+        <port name="I"/>
+       </out>
+      </model>
+      <model type="atomic" x="108" y="75" observables="" name="Pertubation" dynamics="Perturbation" conditions="" width="50" height="66">
        <in>
         <port name="Ctl rate"/>
        </in>
        <out>
-        <port name="Prevalence"/>
+        <port name="C"/>
        </out>
       </model>
      </submodels>
      <connections>
-      <connection type="input">
-       <origin model="Health Dynamic" port="Ctl rate"/>
-       <destination model="SEIR" port="Ctl rate"/>
-      </connection>
-      <connection type="output">
-       <origin model="SEIR" port="Prevalence"/>
-       <destination model="Health Dynamic" port="Prevalence"/>
-      </connection>
-     </connections>
-    </model>
-    <model type="coupled" x="230" y="61" name="Integrator" width="50" height="50">
-     <in>
-      <port name="Prevalence"/>
-      <port name="Control"/>
-     </in>
-     <out>
-      <port name="Risk"/>
-      <port name="Ctl rate"/>
-     </out>
-     <submodels>
-      <model type="atomic" x="132" y="18" observables="" name="HD to Surveillance" dynamics="" conditions="" width="50" height="50">
-       <in>
-        <port name="Prevalence"/>
-       </in>
-       <out>
-        <port name="Risk"/>
-       </out>
-      </model>
-      <model type="atomic" x="276" y="126" observables="" name="Surveillance to HD" dynamics="" conditions="" width="50" height="50">
-       <in>
-        <port name="Control"/>
-       </in>
-       <out>
-        <port name="Ctrl rate"/>
-       </out>
-      </model>
-     </submodels>
-     <connections>
-      <connection type="input">
-       <origin model="Integrator" port="Prevalence"/>
-       <destination model="HD to Surveillance" port="Prevalence"/>
-      </connection>
-      <connection type="output">
-       <origin model="HD to Surveillance" port="Risk"/>
-       <destination model="Integrator" port="Risk"/>
+      <connection type="internal">
+       <origin model="Pertubation" port="C"/>
+       <destination model="SEIR Dynamic" port="C"/>
       </connection>
       <connection type="input">
-       <origin model="Integrator" port="Control"/>
-       <destination model="Surveillance to HD" port="Control"/>
+       <origin model="Epidemic Dynamic" port="Ctl rate"/>
+       <destination model="Pertubation" port="Ctl rate"/>
       </connection>
       <connection type="output">
-       <origin model="Surveillance to HD" port="Ctrl rate"/>
-       <destination model="Integrator" port="Ctl rate"/>
+       <origin model="SEIR Dynamic" port="I"/>
+       <destination model="Epidemic Dynamic" port="Prevalence"/>
       </connection>
      </connections>
     </model>
    </submodels>
-  <connections>
+   <connections>
     <connection type="internal">
-     <origin model="Health Dynamic" port="Prevalence"/>
-     <destination model="Integrator" port="Prevalence"/>
+     <origin model="Epidemic Dynamic" port="Prevalence"/>
+     <destination model="Surveillance &amp; Control" port="Prevalence"/>
     </connection>
     <connection type="internal">
-     <origin model="Integrator" port="Risk"/>
-     <destination model="Surveillance" port="Risk"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Surveillance" port="Control"/>
-     <destination model="Integrator" port="Control"/>
-    </connection>
-    <connection type="internal">
-     <origin model="Integrator" port="Ctl rate"/>
-     <destination model="Health Dynamic" port="Ctl rate"/>
+     <origin model="Surveillance &amp; Control" port="Control"/>
+     <destination model="Epidemic Dynamic" port="Ctl rate"/>
     </connection>
    </connections>
   </model>
  </structures>
 
  <dynamics>
- <dynamic library="&lt;None>" name="MOH" package="OneHealthVietnam"/>
- <dynamic library="MARD" name="MARD" package="OneHealthVietnam"/>
- <dynamic library="DAH" name="DAH" package="OneHealthVietnam"/>
-  <dynamic library="Commune_AH_worker" name="Commune_AH_worker" package="OneHealthVietnam"/>
-  <dynamic library="Commune_Med_Center" name="Commune_Med_Center" package="OneHealthVietnam"/>
-  <dynamic library="District_DVS" name="District_DVS" package="OneHealthVietnam"/>
-  <dynamic library="District_PMC" name="District_PMC" package="OneHealthVietnam"/>
-  <dynamic library="Farmer" name="Farmer" package="OneHealthVietnam"/>
-  <dynamic library="NIHE" name="NIHE" package="OneHealthVietnam"/>
-  <dynamic library="Patient" name="Patient" package="OneHealthVietnam"/>
-  <dynamic library="Province_PMC" name="Province_PMC" package="OneHealthVietnam"/>
-  <dynamic library="Province_Sub_DAH" name="Province_Sub_DAH" package="OneHealthVietnam"/>
- <dynamic library="&lt;Node>" name="SEIR" package="gvle.forrester"/>
+ <dynamic library="MOH" name="MOH" package="POHM-Vietnam"/>
+ <dynamic library="MARD" name="MARD" package="POHM-Vietnam"/>
+ <dynamic library="DAH" name="DAH" package="POHM-Vietnam"/>
+  <dynamic library="Commune_AH_worker" name="Commune_AH_worker" package="POHM-Vietnam"/>
+  <dynamic library="Commune_Med_Center" name="Commune_Med_Center" package="POHM-Vietnam"/>
+  <dynamic library="District_DVS" name="District_DVS" package="POHM-Vietnam"/>
+  <dynamic library="District_PMC" name="District_PMC" package="POHM-Vietnam"/>
+  <dynamic library="Farmer" name="Farmer" package="POHM-Vietnam"/>
+  <dynamic library="NIHE" name="NIHE" package="POHM-Vietnam"/>
+  <dynamic library="Patient" name="Patient" package="POHM-Vietnam"/>
+  <dynamic library="Province_PMC" name="Province_PMC" package="POHM-Vietnam"/>
+  <dynamic library="Province_Sub_DAH" name="Province_Sub_DAH" package="POHM-Vietnam"/>
+ 
+ <dynamic library="Seir" name="SEIR" package="POHM-Vietnam"/>
+ <dynamic library="Perturbation" name="Perturbation" package="POHM-Vietnam"/>
  </dynamics>
  <experiment name="OHVietnam">
    <conditions>
@@ -344,12 +305,54 @@
       <double>0.0</double>
      </port>
      <port name="duration">
-      <double>100</double>
+      <double>150</double>
      </port>"
     </condition>
    <condition name="Commune_Med_Center">
     <port name="consult duration">
      <double>0.1</double>
+    </port>
+   </condition>
+  <condition name="CondSEIR">
+    <port name="method">
+     <string>qss2</string>
+    </port>
+   <port name="init_value_S">
+     <double>0.9</double>
+    </port>
+    <port name="m">
+     <double>0.01</double>
+    </port>
+    <port name="init_value_I">
+     <double>0.1</double>
+    </port>
+    <port name="init_value_R">
+     <double>0</double>
+    </port>
+    <port name="b">
+     <double>0.35</double>
+    </port>
+    <port name="c">
+     <double>0.01</double>
+    </port>
+    <port name="g">
+     <double>0.22</double>
+    </port>
+    <port name="v">
+     <double>0.1</double>
+    </port>
+   <port name="quantum_S">
+     <double>0.01</double>
+    </port>
+    <port name="init_value_C">
+     
+    <double>0</double>
+    </port>
+    <port name="quantum_I">
+     <double>0.01</double>
+    </port>
+    <port name="quantum_R">
+     <double>0.01</double>
     </port>
    </condition>
   </conditions>
@@ -374,16 +377,49 @@
       </key>
      </map>
     </output>
+   <output format="local" location="" plugin="file" name="SEIR" package="vle.output">
+     <map>
+      <key name="type">
+       <string>text</string>
+      </key>
+      <key name="locale">
+       <string>C</string>
+      </key>
+      <key name="output">
+       <string>file</string>
+      </key>
+      <key name="flush-by-bag">
+       <boolean>0</boolean>
+      </key>
+      <key name="julian-day">
+       <boolean>0</boolean>
+      </key>
+     </map>
+    </output>
    </outputs>
-   <view type="timed" output="Patient" timestep="1.0" name="Patient"/>
+   <view type="timed" output="Patient" timestep="1" name="Patient"/>
    <observables>
     <observable name="Patient">
      <port name="Sate">
       <attachedview name="Patient"/>
      </port>
     </observable>
+   <observable name="ObsSEIR">
+     <port name="S">
+      <attachedview name="SEIR"/>
+     </port>
+     
+     <port name="I">
+      <attachedview name="SEIR"/>
+     </port>
+     <port name="R">
+      <attachedview name="SEIR"/>
+     </port>
+    </observable>
    </observables>
+  <view type="timed" output="SEIR" timestep="0.01" name="SEIR"/>
   </views>
  </experiment>
 
+<classes/>
 </vle_project>
