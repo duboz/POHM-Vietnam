@@ -9,7 +9,7 @@
      <in/>
      <out/>
      <submodels>
-      <model type="atomic" x="300" y="24" observables="ObsSEIR" name="SEIR Dynamic" dynamics="SEIR" conditions="CondSEIR" width="50" height="42">
+      <model type="atomic" x="316" y="28" observables="ObsSEIR" name="SEIR Dynamic" dynamics="SEIR" conditions="CondSEIR" width="50" height="42">
        <in>
         <port name="C"/>
        </in>
@@ -25,6 +25,12 @@
         <port name="C"/>
        </out>
       </model>
+     <model type="atomic" x="507" y="61" observables="" name="Plot" dynamics="Plot" conditions="" width="50" height="50">
+       <in>
+        <port name="I"/>
+       </in>
+       <out/>
+      </model>
      </submodels>
      <connections>
       <connection type="internal">
@@ -34,6 +40,10 @@
       <connection type="internal">
        <origin model="SEIR Dynamic" port="I"/>
        <destination model="Surveillance Control" port="I"/>
+      </connection>
+     <connection type="internal">
+       <origin model="SEIR Dynamic" port="I"/>
+       <destination model="Plot" port="I"/>
       </connection>
      </connections>
     </model>
@@ -46,6 +56,7 @@
  <dynamic library="Seir" name="SEIR" package="POHM-Vietnam"/>
  
  <dynamic library="Perturbation" name="Surveillance Control" package="POHM-Vietnam"/>
+ <dynamic library="Plot" name="Plot" package="vle.adaptative-qss"/>
  </dynamics>
  <experiment name="OHVietnam">
    <conditions>
@@ -151,7 +162,7 @@
     <port name="control delay">
      <double>3</double>
     <double>7</double>
-     <double>14</double>
+     <double>10</double>
     </port>
     <port name="control duration">
      <double>5</double>

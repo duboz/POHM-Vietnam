@@ -1,9 +1,9 @@
 Package: MyProject
 Version: 0.1.0
 Depends:
-Build-Depends:
+Build-Depends: vle.ode,vle.adaptative-qss,vle.output
 Conflicts:
-Maintainer: Gauthier Quesnel <quesnel@users.sourceforge.net>
+Maintainer: Raphaël Duboz <raphdub@protonmail.com>
 Description: Still in progress
  .
 Tags: examples

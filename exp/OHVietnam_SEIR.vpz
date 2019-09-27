@@ -295,7 +295,7 @@
   <dynamic library="Province_PMC" name="Province_PMC" package="POHM-Vietnam"/>
   <dynamic library="Province_Sub_DAH" name="Province_Sub_DAH" package="POHM-Vietnam"/>
  
- <dynamic library="Seir" name="SEIR" package="POHM-Vietnam"/>
+ <dynamic library="&lt;None>" name="SEIR" package="POHM-Vietnam"/>
  <dynamic library="Perturbation" name="Perturbation" package="POHM-Vietnam"/>
  </dynamics>
  <experiment name="OHVietnam">

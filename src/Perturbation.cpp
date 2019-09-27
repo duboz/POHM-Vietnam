@@ -45,14 +45,14 @@ class Perturbation : public vd::Dynamics
           {
             ee.addDouble(val_perturbation);    
             output.push_back(ee);
-            std::cout << "perturb " << val_perturbation << "  " << time << std::endl;
+            //std::cout << "perturb " << val_perturbation << "  " << time << std::endl;
           }
           break;
       default:
           {
             ee.addDouble(0.0);
             output.push_back(ee);
-            std::cout << "stop perturb " << time << std::endl;
+            //std::cout << "stop perturb " << time << std::endl;
           }
      }
   }
@@ -105,7 +105,7 @@ class Perturbation : public vd::Dynamics
             phase = ACTIVE;
             time_next = control_delay;
             last_time = time;
-            std::cout << I << '\t' << time << "ACTIVE"<<std::endl;
+            //std::cout << I << '\t' << time << "ACTIVE"<<std::endl;
         }
         else
             time_next = vd::infinity;
