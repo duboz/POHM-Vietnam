@@ -55,7 +55,7 @@ namespace POHMVietnam {
         double m;//beta;// = 0.9;
         //rate an infected recovers and moves into the resistant phase.
         double v;//gamma; //= 0.2,
-        //rate at which an exposed person becomes infective.
+        //rate at which an exposed individual becomes infective.
         double c;//sigma; // = 0.5,
         //vaccination rate
         double g;//nu = 0.0)

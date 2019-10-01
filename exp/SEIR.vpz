@@ -5,11 +5,11 @@
    <in/>
    <out/>
    <submodels>
-    <model type="coupled" x="50" y="35" observables="" name="Epidemic Dynamic" width="50" height="50">
+    <model type="coupled" x="50" y="63" observables="" name="Epidemic Dynamic" width="50" height="50">
      <in/>
      <out/>
      <submodels>
-      <model type="atomic" x="316" y="28" observables="ObsSEIR" name="SEIR Dynamic" dynamics="SEIR" conditions="CondSEIR" width="50" height="42">
+      <model type="atomic" x="327" y="39" observables="ObsSEIRinGVLE" name="SEIR Dynamic" dynamics="SEIR" conditions="CondSEIR" width="50" height="40">
        <in>
         <port name="C"/>
        </in>
@@ -17,7 +17,7 @@
         <port name="I"/>
        </out>
       </model>
-      <model type="atomic" x="50" y="29" observables="" name="Surveillance Control" dynamics="Surveillance Control" conditions="CondPerturbation" width="50" height="41">
+      <model type="atomic" x="52" y="40" observables="" name="Surveillance Control" dynamics="Surveillance Control" conditions="CondPerturbation" width="50" height="41">
        <in>
         <port name="I"/>
        </in>
@@ -25,7 +25,7 @@
         <port name="C"/>
        </out>
       </model>
-     <model type="atomic" x="507" y="61" observables="" name="Plot" dynamics="Plot" conditions="" width="50" height="50">
+      <model type="atomic" x="564" y="17" observables="" name="Plot" dynamics="Plot" conditions="" width="50" height="50">
        <in>
         <port name="I"/>
        </in>
@@ -41,7 +41,7 @@
        <origin model="SEIR Dynamic" port="I"/>
        <destination model="Surveillance Control" port="I"/>
       </connection>
-     <connection type="internal">
+      <connection type="internal">
        <origin model="SEIR Dynamic" port="I"/>
        <destination model="Plot" port="I"/>
       </connection>
@@ -67,7 +67,7 @@
      <double>0</double>
     </port>
      <port name="duration">
-      <double>365</double>
+      <double>100</double>
      <double>365</double>
      <double>365</double>
     </port>"
@@ -101,7 +101,7 @@
      <double>0.035</double>
     </port>
     <port name="b">
-     <double>0.35</double>
+     <double>0.45</double>
     <double>0.35</double>
      <double>0.35</double>
     </port>
@@ -170,21 +170,28 @@
      <double>10</double>
     </port>
     <port name="val perturbation">
-     <double>0.1</double>
+     <double>0.05</double>
     <double>0.2</double>
      <double>0.3</double>
     </port>    
    <port name="detection threshold">
-     <double>0.05</double>
+     <double>0.1</double>
     <double>0.1</double>
      <double>0.2</double>
+    </port>
+   </condition>
+  <condition name="Condrk4">
+    <port name="time_step">
+     <double>0.01</double>
+     <double>0.01</double>
+     <double>0.01</double>
     </port>
    </condition>
   </conditions>
   <views>
    <outputs>
     
-   <output format="local" location="" plugin="file" name="SEIR" package="vle.output">
+   <output format="local" location="" plugin="file" name="SEIR_file" package="vle.output">
      <map>
       <key name="type">
        <string>text</string>
@@ -203,27 +210,61 @@
       </key>
      </map>
     </output>
+   <output format="local" location="" plugin="storage" name="SEIR_plugin" package="vle.output">
+     <map>
+      <key name="columns">
+       <integer>15</integer>
+      </key>
+      <key name="rows">
+       <integer>15</integer>
+      </key>
+      <key name="inc_rows">
+       <integer>10</integer>
+      </key>
+      <key name="header">
+       <string>top</string>
+      </key>
+      <key name="inc_columns">
+       <integer>10</integer>
+      </key>
+     </map>
+    </output>
    </outputs>
    
    <observables>
     
    <observable name="ObsSEIR">
      <port name="S">
-      <attachedview name="SEIR"/>
+      <attachedview name="SEIR_file"/>
      </port>
      
      <port name="I">
-      <attachedview name="SEIR"/>
+      <attachedview name="SEIR_file"/>
      </port>
      <port name="R">
-      <attachedview name="SEIR"/>
+      <attachedview name="SEIR_file"/>
      </port>
     <port name="E">
-      <attachedview name="SEIR"/>
+      <attachedview name="SEIR_file"/>
+     </port>
+    </observable>
+   <observable name="ObsSEIRinGVLE">
+     <port name="S">
+      <attachedview name="SEIR_plugin"/>
+     </port>
+     <port name="E">
+      <attachedview name="SEIR_plugin"/>
+     </port>
+     <port name="I">
+      <attachedview name="SEIR_plugin"/>
+     </port>
+     <port name="R">
+      <attachedview name="SEIR_plugin"/>
      </port>
     </observable>
    </observables>
-  <view type="timed" output="SEIR" timestep="0.1" name="SEIR"/>
+  <view type="timed" output="SEIR_file" timestep="0.1" name="SEIR_file"/>
+  <view type="timed" output="SEIR_plugin" timestep="0.01" name="SEIR_plugin"/>
   </views>
  </experiment>
 
